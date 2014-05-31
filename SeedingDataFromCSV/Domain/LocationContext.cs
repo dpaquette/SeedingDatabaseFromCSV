@@ -8,8 +8,8 @@ namespace SeedingDataFromCSV.Domain
 {
 public class LocationContext : DbContext
 {
-    public IDbSet<Country> Countries { get; set; }
-    public IDbSet<ProvinceState> ProvinceStates { get; set; }
+    public DbSet<Country> Countries { get; set; }
+    public DbSet<ProvinceState> ProvinceStates { get; set; }
 
 }
 }
