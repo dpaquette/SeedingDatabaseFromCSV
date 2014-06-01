@@ -47,9 +47,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.Seeder.EF6, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework.Seeder.EF6, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.Seeder.EF6.0.2.0\lib\EntityFramework.Seeder.EF6.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.Seeder.EF6.0.2.1\lib\EntityFramework.Seeder.EF6.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

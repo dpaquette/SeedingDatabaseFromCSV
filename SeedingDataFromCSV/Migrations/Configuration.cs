@@ -22,26 +22,14 @@ namespace SeedingDataFromCSV.Migrations
 
         protected override void Seed(LocationContext context)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourceName = "SeedingDataFromCSV.Domain.SeedData.countries.csv";
-            context.Countries.SeedFromResource(resourceName, c => c.Code);
-
-            resourceName = "SeedingDataFromCSV.Domain.SeedData.provincestates.csv";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            context.Countries.SeedFromResource("SeedingDataFromCSV.Domain.SeedData.countries.csv", c => c.Code);
+            context.SaveChanges();
+            context.ProvinceStates.SeedFromResource("SeedingDataFromCSV.Domain.SeedData.provincestates.csv", p => p.Code,
+                new CsvColumnMapping<ProvinceState>("CountryCode", (state, countryCode) =>
                 {
-                    CsvReader csvReader = new CsvReader(reader);
-                    csvReader.Configuration.WillThrowOnMissingField = false;
-                    while (csvReader.Read())
-                    {
-                        var provinceState = csvReader.GetRecord<ProvinceState>();
-                        var countryCode = csvReader.GetField<string>("CountryCode");
-                        provinceState.Country = context.Countries.Local.Single(c => c.Code == countryCode);
-                        context.ProvinceStates.AddOrUpdate(p => p.Code, provinceState);
-                    }
-                }
-            }
+                    state.Country = context.Countries.Single(c => c.Code == countryCode);
+                })
+             );            
         }
     }
 }
